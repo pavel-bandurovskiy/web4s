@@ -83,7 +83,7 @@
                                             }
                                         }
                                         ?>>Бессмертие</option>
-                    <option value="through walls" <?php $arr = explode(',', $values['sselect']);
+                    <option value="through walls" <?php $arr = explode(',', $values['select']);
                                         if ($arr != '') {
                                             foreach ($arr as $value) {
                                                 if ($value == "through walls") {
