@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values = array();
   $values['name'] = empty($_COOKIE['name_value']) ? '' : strip_tags($_COOKIE['name_value']);
   $values['email'] = empty($_COOKIE['email_value']) ? '' : strip_tags($_COOKIE['email_value']);
-  $values['birth'] = empty($_COOKIE['birth_value']) ? '' : strip_tags($_COOKIE['birth_value']);
+  $values['date'] = empty($_COOKIE['date_value']) ? '' : strip_tags($_COOKIE['date_value']);
   $values['gender'] = empty($_COOKIE['gender_value']) ? '' : strip_tags($_COOKIE['gender_value']);
   $values['limbs'] = empty($_COOKIE['limbs_value']) ? '' : strip_tags($_COOKIE['limbs_value']);
   $values['select'] = empty($_COOKIE['select_value']) ? '' : strip_tags($_COOKIE['select_value']);
@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $result = $stmt->fetch(PDO::FETCH_ASSOC);
       $values['name'] = $result['name'];
       $values['email'] = $result['email'];
-      $values['birth'] = $result['date'];
+      $values['date'] = $result['date'];
       $values['gender'] = $result['gender'];
       $values['limbs'] = $result['limbs'];
       $values['bio'] = $result['bio'];
@@ -141,13 +141,13 @@ else {
   }
 
   // проверка поля даты рождения
-  $birth = explode('-', $_POST['birth']);
-  $age = (int)date('Y') - (int)$birth[0];
+  $date= explode('-', $_POST['date']);
+  $age = (int)date('Y') - (int)$date[0];
   if ($age > 100 || $age < 0) {
-    setcookie('birth_error', '1', time() + 24 * 60 * 60);
+    setcookie('date_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   } else {
-    setcookie('birth_value', $_POST['birth'], time() + 12 * 30 * 24 * 60 * 60);
+    setcookie('date_value', $_POST['date'], time() + 12 * 30 * 24 * 60 * 60);
   }
 
   // проверка поля пола
@@ -197,7 +197,7 @@ else {
   } else {
     setcookie('name_error', '', 100000);
     setcookie('email_error', '', 100000);
-    setcookie('birth_error', '', 100000);
+    setcookie('date_error', '', 100000);
     setcookie('gender_error', '', 100000);
     setcookie('limbs_error', '', 100000);
     setcookie('select_error', '', 100000);
@@ -209,7 +209,7 @@ else {
   $pass = '7922061';
   $name = $_POST['name'];
   $email = $_POST['email'];
-  $date = $_POST['birth'];
+  $date = $_POST['date'];
   $gender = $_POST['gender'];
   $limbs = $_POST['limbs'];
   $bio = $_POST['bio'];
@@ -217,7 +217,7 @@ else {
   $powers = implode(',', $_POST['select']);
   $member = $_SESSION['login'];
 
-  $db = new PDO('mysql:host=localhost;dbname=u47575', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+  $db = new PDO('mysql:host=localhost;dbname=u47572', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
   // Проверяем меняются ли ранее сохраненные данные или отправляются новые.
   if (!empty($_COOKIE[session_name()]) && session_start() && !empty($_SESSION['login'])) {
     try {
