@@ -153,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     $user = 'u47575';
     $pass = '7922061';
-    $db = new PDO('mysql:host=localhost;dbname=u47523', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+    $db = new PDO('mysql:host=localhost;dbname=u47575', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 
     try {
         $stmt = $db->prepare("INSERT INTO users SET name = ?, email = ?, date = ?, gender = ?, limbs = ?, bio = ?, policy = ?");
