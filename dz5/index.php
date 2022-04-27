@@ -217,7 +217,7 @@ else {
   $powers = implode(',', $_POST['select']);
   $member = $_SESSION['login'];
 
-  $db = new PDO('mysql:host=localhost;dbname=u47572', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+  $db = new PDO('mysql:host=localhost;dbname=u47575', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
   // Проверяем меняются ли ранее сохраненные данные или отправляются новые.
   if (!empty($_COOKIE[session_name()]) && session_start() && !empty($_SESSION['login'])) {
     try {
