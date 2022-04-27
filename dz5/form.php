@@ -72,7 +72,7 @@
             </div>
             <div class="block">
                 <span class="block-title">Способности</span>
-                <select class="form-select form-select-lg mb-2" name="select[]" multiple <?php if ($errors['abilities']) {print 'class="error"';} ?>>
+                <select class="form-select form-select-lg mb-2" name="select[]" multiple <?php if ($errors['select']) {print 'class="error"';} ?>>
                     <option value="endless life" 
                     <?php $arr = explode(',', $values['select']);
                                         if ($arr != '') {
