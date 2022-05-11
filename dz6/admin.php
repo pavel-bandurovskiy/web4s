@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $pass = '7922061';
         $member_id = $_POST['edit'];
 
-        $db = new PDO('mysql:host=localhost;dbname=u47572', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+        $db = new PDO('mysql:host=localhost;dbname=u47575', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
         $stmt = $db->prepare("SELECT * FROM members WHERE login = ?");
         $stmt->execute(array($member_id));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $select = implode(',', $_POST['select']);
         $user = 'u47575';
         $pass = '7922061';
-        $db = new PDO('mysql:host=localhost;dbname=u47572', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+        $db = new PDO('mysql:host=localhost;dbname=u47575', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 
         $member_id = $_COOKIE['user_id'];
 
